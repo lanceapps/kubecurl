@@ -43,7 +43,7 @@ spec:
       serviceAccountName: kubecurl
       containers:
         - name: kubecurl
-          image: kubecurl:1.0.0
+          image: lanceapps/kubecurl:1.0.0
           resources:
             requests:
               cpu: '0.25'
