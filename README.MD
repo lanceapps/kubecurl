@@ -1,8 +1,20 @@
 kubecurl
 https://hub.docker.com/repository/docker/lanceapps/kubecurl
 
+**Docker Installation**
 ```bash
   docker pull lanceapps/kubecurl
+```
+**Kubernetes Installation**
+```bash
+  #Download first the kubecurl-loadbalancer.yaml or copy/paste the contents to a local file 
+  kubectl apply -f kubecurl-loadbalancer.yaml
+```
+
+**AWS EKS Fargate Installation**
+```bash
+  #Download first the kubecurl-fargate.yaml or copy/paste the contents to a local file 
+  kubectl apply -f kubecurl-fargate.yaml
 ```
 
 **Use Case Details:**
