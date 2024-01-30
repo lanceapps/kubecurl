@@ -3,6 +3,8 @@ kind: ServiceAccount
 metadata:
   name: kubecurl
   namespace: default
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::111111111:role/replace-with-your-value
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -58,6 +60,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: kubecurl
+  annotations:
+    kubernetes.io/aws-load-balancer-type: external
+    kubernetes.io/aws-load-balancer-scheme: internet-facing
+    kubernetes.io/aws-load-balancer-nlb-target-type: ip
 spec:
   selector:
     app: kubecurl
@@ -65,4 +71,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 5000
+      name: http
   type: LoadBalancer
