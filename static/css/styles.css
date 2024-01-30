@@ -1,0 +1,91 @@
+/* Ubuntu Command Line Styles */
+
+body {
+    font-family: 'Ubuntu Mono', monospace;
+    background-color: #300a24;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.terminal {
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #2c001e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.prompt {
+    color: #1abc9c;
+}
+
+.input-line {
+    display: flex;
+}
+
+.input-line:before {
+    content: "$ ";
+    color: #1abc9c;
+}
+
+.input {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    outline: none;
+}
+
+.output {
+    margin-top: 10px;
+}
+
+.command {
+    color: #ffffff;
+}
+
+.argument {
+    color: #9b59b6;
+}
+
+.option {
+    color: #3498db;
+}
+
+.comment {
+    color: #95a5a6;
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    border-bottom: 1px solid #444444;
+}
+
+.table th {
+    text-align: left;
+    color: #1abc9c;
+}
+
+.table tr:nth-child(even) {
+    background-color: #3a001f;
+}
+
+.table tr:hover {
+    background-color: #4a002f;
+}
+
+/* Sample Output */
+.output {
+    font-style: italic;
+}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Pod Details{% endblock %}
+
+{% block content %}
+<div class="alert alert-light" role="alert">
+  <h4 class="alert-heading">{{ pod.metadata.name }} | {{ pod.metadata.namespace }} | {{ pod.status.phase }}</h4>
+  <hr>
+  <form id="requestForm">
+    <div class="row g-3">
+      <div class="col-auto">
+        <label for="http_url" class="col-form-label">http://{{ pod.status.pod_ip }}:{{container_port}}</label>
+      </div>
+      <div class="col-auto">
+        <input type="text" id="http_url" name="http_url" class="form-control" >
+      </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-success mb-3" onclick="sendRequest()">Send Request</button>
+      </div>
+    </div>
+  </form>
+  <p class="mb-0">Response:</p>
+  <textarea id="responseBox" rows="20" class="form-control" readonly></textarea>
+</div>
+<script>
+  function sendRequest() {
+    var url = $("#http_url").val();
+    var namespace = "{{ pod.metadata.namespace }}";
+    var name = "{{ pod.metadata.name }}";
+    $.ajax({
+      type: "POST",
+      url: "/send_request?namespace=" + namespace + "&name=" + name,
+      data: {uri: url}, // Pass the URI as 'uri' parameter
+      success: function(response) {
+        $("#responseBox").val(response);
+      },
+      error: function(xhr, status, error) {
+        $("#responseBox").val("Error occurred: " + error);
+      }
+    });
+  }
+</script>
+{% endblock %}

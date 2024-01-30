@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Kubernetes Pods{% endblock %}
+
+{% block content %}
+
+<div class="alert alert-light" role="alert">
+    {{ table_html | safe }}
+</div>
+
+{% endblock %}
